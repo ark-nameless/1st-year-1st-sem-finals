@@ -1,0 +1,46 @@
+# Project: MonsterHunter
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+OBJ      = main.o include/neotools.o include/panels.o include/states.o include/tools.o include/camera.o include/keys.o
+LINKOBJ  = main.o include/neotools.o include/panels.o include/states.o include/tools.o include/camera.o include/keys.o
+LIBS     = -L"C:/Dev-Cpp/MinGW64/lib32" -L"C:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib32" -static-libgcc -m32 -g3
+INCS     = -I"C:/Dev-Cpp/MinGW64/include" -I"C:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"C:/Dev-Cpp/MinGW64/include" -I"C:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = MonsterHunter.exe
+CXXFLAGS = $(CXXINCS) -m32 -g3
+CFLAGS   = $(INCS) -m32 -g3
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+include/neotools.o: include/neotools.cpp
+	$(CPP) -c include/neotools.cpp -o include/neotools.o $(CXXFLAGS)
+
+include/panels.o: include/panels.cpp
+	$(CPP) -c include/panels.cpp -o include/panels.o $(CXXFLAGS)
+
+include/states.o: include/states.cpp
+	$(CPP) -c include/states.cpp -o include/states.o $(CXXFLAGS)
+
+include/tools.o: include/tools.cpp
+	$(CPP) -c include/tools.cpp -o include/tools.o $(CXXFLAGS)
+
+include/camera.o: include/camera.cpp
+	$(CPP) -c include/camera.cpp -o include/camera.o $(CXXFLAGS)
+
+include/keys.o: include/keys.cpp
+	$(CPP) -c include/keys.cpp -o include/keys.o $(CXXFLAGS)
